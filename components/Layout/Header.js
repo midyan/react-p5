@@ -17,9 +17,8 @@ function Header() {
     <header className={s.header}>
       <div className={s.container}>
         <Link className={s.title} to="/">
-          React App <strong>Starter Kit</strong>
+          p5.js <strong>Using React-App</strong>
         </Link>
-        <Navigation />
       </div>
     </header>
   );
