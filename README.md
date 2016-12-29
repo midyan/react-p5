@@ -19,7 +19,7 @@
   $ git clone https://github.com/midyan/react-p5.git [[directory_name/]]
   ```
   <br>
-  Now, to install all its dependencies you need to navigate to the directory you cloned it into and run the follow for Linux or OSx environments:  
+  Now, to install all its dependencies you need to navigate to the directory you cloned it into and run the following for Linux or OSx environments:  
   ```sh
   $ sudo npm run setup
   ```
