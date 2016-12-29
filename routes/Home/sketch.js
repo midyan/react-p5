@@ -1,5 +1,5 @@
 
-function sketch(p){
+function sketch(p) {
 
   p.setup = function (){
     p.createCanvas(1066, 600)
