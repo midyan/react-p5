@@ -10,14 +10,25 @@
 
 ###What is needed to use it
   -NodeJs 6+<br>
+  -git (Command line or GUI)<br>
   -Comand Line Interface(Linux Terminal or similar)<br>
 
-
-
 ###How to install and setup
-  Navigate to the root directory and run the following commands:
+  First, you need to clone this repository to your machine/server  
   ```sh
-  $ npm install -g react-app
-  $ npm install
+  $ git clone https://github.com/midyan/react-p5.git [[directory_name/]]
+  ```
+  <br>
+  Now, to install all its dependencies you need to navigate to the directory you cloned it into and run the follow for Linux or OSx environments:  
+  ```sh
+  $ sudo npm run setup
+  ```
+  Or, if you are on Windows, open the PowerShell or CMD as Administrator and run:
+  ```sh
+  $ npm run setup
+  ```
+  <br>
+  To start the project, simple run the command below and a localhost server will be created with everything up and running:
+  ```sh
   $ npm run start
   ```
