@@ -16,9 +16,9 @@ function Header() {
   return (
     <header className={s.header}>
       <div className={s.container}>
-        <Link className={s.title} to="/">
+        <a className={s.title} href='https://github.com/midyan/react-p5'>
           p5.js <strong>Using React-App</strong>
-        </Link>
+        </a>
       </div>
     </header>
   );
