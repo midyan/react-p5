@@ -13,7 +13,7 @@ import Link from '../../components/Link';
 import s from './Home.css';
 import P5Wrapper from './p5.js';
 
-const title = 'React App Starter Kit';
+const title = 'p5.js & React';
 
 class HomePage extends React.Component {
 
@@ -28,7 +28,6 @@ class HomePage extends React.Component {
   render() {
     return (
       <Layout className={s.content}>
-        <h1>Welcome!</h1>
         <P5Wrapper/>
       </Layout>
     );

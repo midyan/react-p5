@@ -2,11 +2,10 @@ var p5 = require('p5')
 
 import React, { PropTypes } from 'react';
 import sketch from './sketch.js'
+import s from './p5.css'
 
 class P5Wrapper extends React.Component {
   componentDidMount() {
-    console.log('Component Did Mount')
-    console.log(this)
     this.canvas = new p5(sketch, this.refs.wrapper)
   }
   componentWillReceiveProps(props, newprops) {
@@ -15,9 +14,7 @@ class P5Wrapper extends React.Component {
     }
   }
   render() {
-    console.log('Render Start')
-    console.log(this.canvas)
-    return  <div ref="wrapper"></div>
+    return  <div className={s.canvasWrapper} ref="wrapper"></div>
   }
 }
 
