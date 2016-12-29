@@ -33,6 +33,7 @@
   $ npm run start
   ```
 
+
 # How to use it
   The sketch file is located at '/routes/Home'. Now go and make the magic happen.<br><br>Also, since the ReactJs requires you to instantiate the p5 class for each component created, the 'p' argument is required in the sketch class. All the p5 functions, methods, objects and classes are contained inside this 'p' argument. Please refer to <a href='https://github.com/processing/p5.js/wiki/Instantiation-Cases'>Instantiation Cases</a> inside the p5 documentation.
 
