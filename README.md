@@ -9,9 +9,9 @@
 
 
 ###What is needed to use it
-  *NodeJs 6+<br>
-  *git (Command line or GUI)<br>
-  *Comand Line Interface(Linux Terminal or similar)<br>
+  --NodeJs 6+<br>
+  --git (Command line or GUI)<br>
+  --Comand Line Interface(Linux Terminal or similar)<br>
 
 # How to install and setup
   First, you need to clone this repository to your machine/server  
