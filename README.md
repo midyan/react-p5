@@ -9,7 +9,8 @@
 
 
 ###What is needed to use it
-  -NodeJs 6+ \n -Comand Line Interface(Linux Terminal or similar)
+  -NodeJs 6+<br>
+  -Comand Line Interface(Linux Terminal or similar)<br>
 
 
 
