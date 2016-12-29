@@ -13,7 +13,7 @@
   -git (Command line or GUI)<br>
   -Comand Line Interface(Linux Terminal or similar)<br>
 
-###How to install and setup
+# How to install and setup
   First, you need to clone this repository to your machine/server  
   ```sh
   $ git clone https://github.com/midyan/react-p5.git [[directory_name/]]
@@ -28,7 +28,7 @@
   $ npm run setup
   ```
   <br>
-  To start the project, simple run the command below and a localhost server will be created with everything up and running:
+  To start the project, simply run the command below and a localhost server will be created with everything up and running:
   ```sh
   $ npm run start
   ```
