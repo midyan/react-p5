@@ -33,6 +33,7 @@
     "extends": "airbnb"
   },
   "scripts": {
+    "setup" : "(npm install -g react-app; npm install)",
     "lint": "eslint actions components core routes test utils main.js",
     "build": "react-app build",
     "start": "react-app run"
