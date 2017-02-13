@@ -13,7 +13,7 @@ import Link from '../../components/Link';
 import s from './Home.css';
 import P5Wrapper from './p5.js';
 
-const title = 'p5.js & React';
+const title = 'pen5.JS';
 
 class HomePage extends React.Component {
 
