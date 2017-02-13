@@ -1,7 +1,7 @@
 var p5 = require('p5')
 
 import React, { PropTypes } from 'react';
-import sketch from './sketch.js'
+import sketch from './smart_rockets.js'
 import s from './p5.css'
 
 class P5Wrapper extends React.Component {

@@ -1,8 +1,9 @@
 function sketch(p) {
-  var populationSize = 100
+
+  var populationSize = 300
   var lifespan = 5000
   var population, target, lifeP, count = 0
-  var mutationRate = 3
+  var mutationRate = 5
   var rx = 130
   var ry = 200
   var rw = 800
@@ -27,7 +28,7 @@ function sketch(p) {
       count = 0
     }
     for(var i = 0; i<population.rockets.length; i++){
-      if( !population.rockets[i].crashed&&!population.rockets[i].completed ) mCount++
+      if( !population.rockets[i].crashed && !population.rockets[i].completed ) mCount++
     }
     if(mCount == 0) {
       population.evaluate()
@@ -45,12 +46,14 @@ function sketch(p) {
     this.count = 0
     this.crashed = false
     this.completed = false
+    this.minDist = p.dist(this.pos.x, this.pos.y, target.x, target.y)
 
     this.applyForce = function(force){
       this.acc.add(force)
     }
 
     this.update = function(){
+      var d = p.dist(this.pos.x, this.pos.y, target.x, target.y)
 
       if(!this.crashed&&!this.completed){
         this.applyForce(this.dna.genes[count])
@@ -70,9 +73,11 @@ function sketch(p) {
           this.crashed = true
         }
 
+        if( d < this.minDist ) this.minDist = d
+
       }
 
-      var d = p.dist(this.pos.x, this.pos.y, target.x, target.y)
+
 
       if(d<15){
         this.completed = true
@@ -84,8 +89,9 @@ function sketch(p) {
     this.calcFit = function(){
       var fitY = p.map(this.pos.y-target.y, 0, p.height, p.height, 0)
       var fitX = p.map(this.pos.x-target.x, 0, p.height, p.height, 0)
-      var fitCount = p.map(count, 0, p.height, p.height, 0)
-      this.fitness = fitY + fitX + fitCount
+      var fitCount = 0.5*p.map(count, 0, p.height, p.height, 0)
+      var fitD = p.map(this.minDist, 0, p.height, p.height, 0)
+      this.fitness = !this.crashed? Math.sqrt(fitY*fitY + fitX*fitX + fitCount*fitCount + fitD*fitD) : Math.sqrt(fitY*fitY + fitX*fitX + fitD*fitD)
       if(this.completed) this.fitness *= 10
       if(this.crashed) this.fitness *= 0.1
     }
@@ -109,7 +115,7 @@ function sketch(p) {
       this.rockets[i] = new Rocket()
     }
 
-    this.evaluate = function(){
+    this.evaluate = function() {
       var maxfit = 0
       for(var i = 0; i<this.popsize; i++){
         this.rockets[i].calcFit()
@@ -120,6 +126,7 @@ function sketch(p) {
 
       for(var i = 0; i<this.popsize; i++){
         this.rockets[i].fitness /= maxfit
+        if(this.rockets[i].crashed) this.rockets[i].fitness *= 0.1
       }
 
       this.matingpool = []
@@ -191,8 +198,8 @@ function sketch(p) {
 
   p.setup = function (){
     p.createCanvas(1066, 500)
-    population = new Population()
     target = p.createVector(p.width/2, 50)
+    population = new Population()
     // p.rect(rx, ry, rw, rh)
   }
 
