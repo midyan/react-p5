@@ -7,16 +7,17 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import React from 'react';
-import Navigation from './Navigation';
-import Link from '../Link';
-import s from './Header.css';
+import React from "react";
+import Navigation from "./Navigation";
+import Link from "../Link";
+import s from "./Header.css";
 
 function Header() {
+  return null;
   return (
     <header className={s.header}>
       <div className={s.container}>
-        <a className={s.title} href='https://github.com/midyan/react-p5'>
+        <a className={s.title} href="https://github.com/midyan/react-p5">
           p5.js <strong>Using React-App</strong>
         </a>
       </div>

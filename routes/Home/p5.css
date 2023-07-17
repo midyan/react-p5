@@ -9,6 +9,6 @@
 
 .canvasWrapper > canvas{
   position: absolute;
-  left: 50%;
-  transform: translate(-50%, 25px);
+
+  /* transform: translate(050%, 0px); */
 }
