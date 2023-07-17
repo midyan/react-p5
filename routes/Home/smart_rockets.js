@@ -1,14 +1,26 @@
 function sketch(p) {
   const populationSize = 300;
   const lifespan = 5000;
+
+  const searchParams = new URLSearchParams(window.location.search);
+
+  const width = Number(searchParams.get("width") || 1066);
+  const height = Number(searchParams.get("height") || 500);
+
+  console.log("TEST_#", {
+    width,
+    height,
+  });
+
   let population,
     target,
     lifeP,
     count = 0;
   const mutationRate = 1;
-  const rx = 130;
-  const ry = 350;
-  const rw = 800;
+
+  const rx = width / 4;
+  const ry = (2 * height) / 3;
+  const rw = width / 2;
   const rh = 30;
 
   function Random2D() {
@@ -30,7 +42,9 @@ function sketch(p) {
       count = 0;
     }
     for (let i = 0; i < population.rockets.length; i++) {
-      if (!population.rockets[i].crashed && !population.rockets[i].completed) mCount++;
+      if (!population.rockets[i].crashed && !population.rockets[i].completed) {
+        mCount++;
+      }
     }
     if (mCount == 0) {
       population.evaluate();
@@ -40,7 +54,7 @@ function sketch(p) {
   }
 
   function Rocket(dna) {
-    this.pos = p.createVector(p.width / 2, p.height);
+    this.pos = p.createVector(width / 2, height);
     this.vel = p.createVector(0, -1);
     this.acc = p.createVector();
     this.dna = dna || new DNA();
@@ -63,15 +77,20 @@ function sketch(p) {
         this.pos.add(this.vel);
         this.acc.mult(0);
 
-        if (this.pos.x < 0 || this.pos.x > p.width) {
+        if (this.pos.x < 0 || this.pos.x > width) {
           this.crashed = true;
         }
 
-        if (this.pos.y < 0 || this.pos.y > p.height) {
+        if (this.pos.y < 0 || this.pos.y > height) {
           this.crashed = true;
         }
 
-        if (this.pos.x > rx && this.pos.x < rx + rw && this.pos.y > ry && this.pos.y < ry + rh) {
+        if (
+          this.pos.x > rx &&
+          this.pos.x < rx + rw &&
+          this.pos.y > ry &&
+          this.pos.y < ry + rh
+        ) {
           this.crashed = true;
         }
 
@@ -85,8 +104,8 @@ function sketch(p) {
     };
 
     this.calcFit = function () {
-      const fitY = p.map(Math.abs(this.pos.y - target.y), 0, p.height, p.height, 0);
-      const fitX = p.map(Math.abs(this.pos.x - target.x), 0, p.height, p.height, 0);
+      const fitY = p.map(Math.abs(this.pos.y - target.y), 0, height, height, 0);
+      const fitX = p.map(Math.abs(this.pos.x - target.x), 0, height, height, 0);
 
       // is after obstacle
       const multiplier = this.pos.y < ry - 10 ? 100 : 1;
@@ -141,7 +160,7 @@ function sketch(p) {
         }
       }
       this.avgFit = sum / this.popsize;
-      console.log('average fitness', this.avgFit);
+      console.log("average fitness", this.avgFit);
     };
 
     this.selection = function () {
@@ -196,8 +215,8 @@ function sketch(p) {
   }
 
   p.setup = function () {
-    p.createCanvas(1066, 500);
-    target = p.createVector(p.width / 2, 50);
+    p.createCanvas(width, height);
+    target = p.createVector(width / 2, 50);
     population = new Population();
     // p.rect(rx, ry, rw, rh)
   };
