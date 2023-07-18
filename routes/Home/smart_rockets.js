@@ -1,5 +1,5 @@
 function sketch(p) {
-  const populationSize = 300;
+  const populationSize = 30;
   const lifespan = 5000;
 
   const searchParams = new URLSearchParams(window.location.search);
